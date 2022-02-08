@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     /// <summary>
@@ -19,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
     /// </summary>
     public class ConfigFilter
     {
-        public string Key { get; set; } = null;
+        public IEnumerable<string> Keys { get; set; } = null;
         public bool GlobalOnly { get; set; } = false;
         public string Module { get; set; } = null;
         public string Cmdlet { get; set; } = null;

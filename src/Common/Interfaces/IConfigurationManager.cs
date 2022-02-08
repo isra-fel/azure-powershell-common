@@ -34,7 +34,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
         IEnumerable<ConfigDefinition> ListConfigDefinitions();
         //T GetConfig<T>(string key) where T : Config;
         void RegisterConfig(ConfigDefinition config);
-        ConfigData<T> UpdateConfig<T>(UpdateConfigOptions<T> options);
+
+        ConfigData UpdateConfig(UpdateConfigOptions options);
+        ConfigData<T> UpdateConfig<T>(UpdateConfigOptions<T> options); // keep the generic version?
         void ClearConfig(ClearConfigOptions options);
     }
 }

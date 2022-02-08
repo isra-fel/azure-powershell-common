@@ -19,16 +19,27 @@ namespace Microsoft.WindowsAzure.Commands.Common
     /// <summary>
     /// Options for updating a config. Used as input of <see cref="IConfigurationManager.UpdateConfig(UpdateConfigOptions)"/>
     /// </summary>
-    public class UpdateConfigOptions<T>
+    public class UpdateConfigOptions<T> : UpdateConfigOptions
     {
-        public UpdateConfigOptions(string key, T value)
+        public UpdateConfigOptions(string key, T value) : base(key, null)
+        {
+            Value = value;
+        }
+
+        public new T Value { get; }
+    }
+
+    // todo: split into two files
+    public class UpdateConfigOptions
+    {
+        public UpdateConfigOptions(string key, object value)
         {
             Key = key ?? throw new ArgumentNullException(nameof(key));
             Value = value;
         }
 
         public string Key { get; }
-        public T Value { get; }
+        public object Value { get; }
         public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser; // todo: maybe Scope should be mandatory when constructing UpdateConfigOptions. There's no obvious preference in the perspective of the library
         public string Module { get; set; } = null;
         public string Cmdlet { get; set; } = null;
