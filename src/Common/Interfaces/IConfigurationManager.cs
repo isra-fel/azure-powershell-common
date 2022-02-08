@@ -31,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <param name="filter">Filter the result by config key or level etc.</param>
         /// <returns></returns>
         IEnumerable<ConfigData> ListConfigs(ConfigFilter filter = null);
+        IEnumerable<ConfigDefinition> ListConfigDefinitions();
         //T GetConfig<T>(string key) where T : Config;
         void RegisterConfig(ConfigDefinition config);
         ConfigData<T> UpdateConfig<T>(UpdateConfigOptions<T> options);

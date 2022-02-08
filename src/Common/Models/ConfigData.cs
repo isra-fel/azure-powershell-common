@@ -20,20 +20,12 @@ namespace Microsoft.WindowsAzure.Commands.Common
     public class ConfigData
     {
         public ConfigData(ConfigDefinition config, object value = null)
-        {
-            Definition = config;
-            Key = config.Key;
+        {            
+            Definition = config ?? throw new System.ArgumentNullException(nameof(config));
             Value = value;
-            Description = config.Description;
-            DefaultValue = config.DefaultValue;
         }
 
-        public ConfigDefinition Definition { get; set; }
-
-        // todo: remove duplicated properties
-        public string Key { get; set; }
-        public object Value { get; set; }
-        public string Description { get; set; }
-        public object DefaultValue { get; set; }
+        public ConfigDefinition Definition { get; }
+        public object Value { get; }
     }
 }
