@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public abstract string Key { get; }
 
-        public abstract string Description { get; } // todo: consider "HelpMessage"
+        public abstract string HelpMessage { get; }
 
         public virtual string EnvironmentVariableName { get; } = null;
 
