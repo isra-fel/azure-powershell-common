@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     /// <summary>
@@ -19,13 +21,17 @@ namespace Microsoft.WindowsAzure.Commands.Common
     /// </summary>
     public class ConfigData
     {
-        public ConfigData(ConfigDefinition config, object value = null)
+        public ConfigData(ConfigDefinition config, object value, ConfigScope scope, string fullKey)
         {            
-            Definition = config ?? throw new System.ArgumentNullException(nameof(config));
+            Definition = config ?? throw new PSArgumentNullException(nameof(config));
             Value = value;
+            Scope = scope;
+            FullKey = fullKey ?? throw new PSArgumentNullException(nameof(fullKey));
         }
 
         public ConfigDefinition Definition { get; }
         public object Value { get; }
+        public string FullKey { get; }
+        public ConfigScope Scope { get; }
     }
 }

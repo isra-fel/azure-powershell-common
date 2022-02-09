@@ -17,6 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
     public enum ConfigScope
     {
         CurrentUser, // default
-        Process
+        Process,
+        Default
     }
 }

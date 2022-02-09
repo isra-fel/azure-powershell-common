@@ -16,7 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class ConfigData<T> : ConfigData
     {
-        public ConfigData(ConfigDefinition config, T value) : base(config)
+        public ConfigData(ConfigDefinition config, T value, ConfigScope scope, string fullKey) : base(config, null, scope, fullKey)
         {
             Value = value;
         }
