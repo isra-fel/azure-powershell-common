@@ -19,17 +19,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
     /// <summary>
     /// Options for updating a config. Used as input of <see cref="IConfigurationManager.UpdateConfig(UpdateConfigOptions)"/>
     /// </summary>
-    public class UpdateConfigOptions<T> : UpdateConfigOptions
-    {
-        public UpdateConfigOptions(string key, T value) : base(key, null)
-        {
-            Value = value;
-        }
-
-        public new T Value { get; }
-    }
-
-    // todo: split into two files
     public class UpdateConfigOptions
     {
         public UpdateConfigOptions(string key, object value)

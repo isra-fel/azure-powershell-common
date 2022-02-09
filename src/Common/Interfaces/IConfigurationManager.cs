@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         void RegisterConfig(ConfigDefinition config);
 
         ConfigData UpdateConfig(UpdateConfigOptions options);
-        ConfigData<T> UpdateConfig<T>(UpdateConfigOptions<T> options); // keep the generic version?
+
         void ClearConfig(ClearConfigOptions options);
     }
 }
