@@ -22,8 +22,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
     public class ConfigFilter
     {
         public IEnumerable<string> Keys { get; set; } = null;
-        public bool GlobalOnly { get; set; } = false;
-        public string Module { get; set; } = null;
-        public string Cmdlet { get; set; } = null;
+        public string Qualifier { get; set; } = null;
     }
 }

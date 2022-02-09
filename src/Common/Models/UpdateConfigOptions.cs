@@ -30,7 +30,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public string Key { get; }
         public object Value { get; }
         public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser; // todo: maybe Scope should be mandatory when constructing UpdateConfigOptions. There's no obvious preference in the perspective of the library
-        public string Module { get; set; } = null;
-        public string Cmdlet { get; set; } = null;
+        public string Qualifier { get; set; } = null;
     }
 }

@@ -23,7 +23,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
         }
         public string Key { get; }
         public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser;
-        public string Module { get; set; } = null;
-        public string Cmdlet { get; set; } = null;
+        public string Qualifier { get; set; } = null;
     }
 }
