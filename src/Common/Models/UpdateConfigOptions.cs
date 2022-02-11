@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
     {
         public UpdateConfigOptions(string key, object value)
         {
-            Key = key ?? throw new ArgumentNullException(nameof(key));
+            Key = key ?? throw new AzPSArgumentNullException($"{nameof(key)} cannot be null.", nameof(key));
             Value = value;
         }
 

@@ -22,6 +22,17 @@ namespace Microsoft.WindowsAzure.Commands.Common
     public class ConfigFilter
     {
         public IEnumerable<string> Keys { get; set; } = null;
+
+        /// <summary>
+        /// Specifies what part of Azure PowerShell the config applies to.
+        /// </summary>
+        /// <remarks>
+        /// Possible values are:
+        /// - null: the config applies to any of above.
+        /// - "Az": the config applies to all modules and cmdlets of Azure PowerShell.
+        /// - Name of a module: the config applies to a certain module of Azure PowerShell. For example, "Az.Storage".
+        /// - Name of a cmdlet: the config applies to a certain cmdlet of Azure PowerShell. For example, "Get-AzKeyVault".
+        /// </remarks>
         public string Qualifier { get; set; } = null;
     }
 }

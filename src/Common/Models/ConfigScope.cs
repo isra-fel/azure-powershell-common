@@ -18,6 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
     {
         CurrentUser, // default
         Process,
-        Default
+        Default,
+        TBD // todo: placeholder, remove me
     }
 }
