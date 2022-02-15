@@ -21,16 +21,18 @@ namespace Microsoft.WindowsAzure.Commands.Common
     /// </summary>
     public class ConfigData
     {
-        public ConfigData(ConfigDefinition config, object value, ConfigScope scope, string fullKey)
+        public ConfigData(ConfigDefinition config, object value, ConfigScope scope, string qualifier, string fullKey)
         {            
             Definition = config ?? throw new PSArgumentNullException(nameof(config));
             Value = value;
             Scope = scope;
+            Qualifier = qualifier;
             FullKey = fullKey ?? throw new PSArgumentNullException(nameof(fullKey));
         }
 
         public ConfigDefinition Definition { get; }
         public object Value { get; }
+        public string Qualifier { get; }
         public string FullKey { get; }
         public ConfigScope Scope { get; }
     }
