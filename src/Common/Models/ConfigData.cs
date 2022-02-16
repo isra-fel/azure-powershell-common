@@ -17,7 +17,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     /// <summary>
-    /// Wrapper for both definition and value of a config. Used as output of some API of <see cref="IConfigurationManager"/>.
+    /// Wrapper for both definition and value of a config. Used as output of some API of <see cref="IConfigManager"/>.
     /// </summary>
     public class ConfigData
     {

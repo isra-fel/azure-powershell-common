@@ -18,9 +18,9 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
-    public interface IConfigurationManager
+    public interface IConfigManager
     {
-        string ConfigurationFilePath { get; }
+        string ConfigFilePath { get; }
         void BuildConfig();
         T GetConfigValue<T>(string key, InvocationInfo invocation = null);
         object GetConfigValue(Type type, string key, InvocationInfo invocation = null);

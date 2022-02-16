@@ -17,7 +17,7 @@ using System.Collections.Generic;
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     /// <summary>
-    /// Filter options for listing configurations. Used as input of some API of <see cref="IConfigurationManager" />
+    /// Filter options for listing configurations. Used as input of some API of <see cref="IConfigManager" />
     /// </summary>
     public class ConfigFilter
     {

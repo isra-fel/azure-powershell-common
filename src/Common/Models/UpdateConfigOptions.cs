@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     /// <summary>
-    /// Options for updating a config. Used as input of <see cref="IConfigurationManager.UpdateConfig(UpdateConfigOptions)"/>
+    /// Options for updating a config. Used as input of <see cref="IConfigManager.UpdateConfig(UpdateConfigOptions)"/>
     /// </summary>
     public class UpdateConfigOptions
     {
