@@ -35,6 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         //T GetConfig<T>(string key) where T : Config;
         void RegisterConfig(ConfigDefinition config);
 
+        ConfigData UpdateConfig(string key, object value);
         ConfigData UpdateConfig(UpdateConfigOptions options);
 
         void ClearConfig(ClearConfigOptions options);

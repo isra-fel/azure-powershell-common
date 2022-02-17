@@ -29,7 +29,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public virtual IReadOnlyCollection<ConfigLevel> ApplicableLevels => new ConfigLevel[] { ConfigLevel.Az, ConfigLevel.Module, ConfigLevel.Cmdlet };
 
-        public abstract bool Validate(object value);
+        /// <summary>
+        /// Validates if the input value can be set to this config. Throws an exception if not.
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        public virtual void Validate(object value) { }
 
         public abstract Type ValueType { get; }
     }
