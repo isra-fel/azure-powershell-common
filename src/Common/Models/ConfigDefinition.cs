@@ -17,12 +17,27 @@ using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
+    /// <summary>
+    /// Represents the definition of a config of Azure PowerShell.
+    /// </summary>
     public abstract class ConfigDefinition
     {
+        /// <summary>
+        /// Gets the default value of this config.
+        /// </summary>
         public abstract object DefaultValue { get; }
 
+        /// <summary>
+        /// Gets the unique key of this config.
+        /// </summary>
+        /// <remarks>It is also used as the name of the PowerShell parameter which maps to this config, so the key must follow the design guideline and conventions. See <see href="https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/design-guidelines/parameter-best-practices.md#parameter-best-practices">Parameter Best Practices</see>.</remarks>
+        /// <seealso cref=""/>
         public abstract string Key { get; }
 
+        /// <summary>
+        /// Gets the help message or description of the config.
+        /// It is also used as the help message of the PowerShell parameter which maps to this config.
+        /// </summary>
         public abstract string HelpMessage { get; }
 
         public virtual string EnvironmentVariableName { get; } = null;
@@ -30,11 +45,14 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public virtual IReadOnlyCollection<ConfigLevel> ApplicableLevels => new ConfigLevel[] { ConfigLevel.Az, ConfigLevel.Module, ConfigLevel.Cmdlet };
 
         /// <summary>
-        /// Validates if the input value can be set to this config. Throws an exception if not.
+        /// Gets the type of the value of this config.
+        /// </summary>
+        public abstract Type ValueType { get; }
+
+        /// <summary>
+        /// Override in derived classes to validate the input value. Throws an exception if not.
         /// </summary>
         /// <param name="value">The value to check.</param>
         public virtual void Validate(object value) { }
-
-        public abstract Type ValueType { get; }
     }
 }
