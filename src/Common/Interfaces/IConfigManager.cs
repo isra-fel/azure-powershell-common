@@ -38,6 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         ConfigData UpdateConfig(string key, object value);
         ConfigData UpdateConfig(UpdateConfigOptions options);
 
+        void ClearConfig(string key);
         void ClearConfig(ClearConfigOptions options);
     }
 }
