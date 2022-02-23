@@ -12,24 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Exceptions;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.PowerShell.Common.Share.Config
 {
-    /// <summary>
-    /// Options for updating a config. Used as input of <see cref="IConfigManager.UpdateConfig(UpdateConfigOptions)"/>
-    /// </summary>
-    public class UpdateConfigOptions
+    public class ClearConfigOptions
     {
-        public UpdateConfigOptions(string key, object value)
+        public ClearConfigOptions(string key)
         {
-            Key = key ?? throw new AzPSArgumentNullException($"{nameof(key)} cannot be null.", nameof(key));
-            Value = value;
+            Key = key;
         }
-
         public string Key { get; }
-        public object Value { get; }
-        public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser; // todo: maybe Scope should be mandatory when constructing UpdateConfigOptions. There's no obvious preference in the perspective of the library
+        public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser;
         public string Qualifier { get; set; } = null;
     }
 }

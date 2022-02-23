@@ -14,7 +14,7 @@
 
 using System.Management.Automation;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.PowerShell.Common.Share.Config
 {
     /// <summary>
     /// Wrapper for both definition and value of a config. Used as output of some API of <see cref="IConfigManager"/>.

@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.PowerShell.Common.Share.Config
 {
     public interface IConfigManager
     {
