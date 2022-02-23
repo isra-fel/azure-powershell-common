@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Common.Share.Survey
             {
                 if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
                 {
-                    return !configManager.GetConfigValue<bool>("EnableInterceptSurvey");
+                    return !configManager.GetConfigValue<bool>(ConfigKeys.EnableInterceptSurvey);
                 }
                 Debug.Fail("Config manager should have been registered when Az.Accounts is imported.");
                 return true;
