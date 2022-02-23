@@ -15,15 +15,14 @@
 #undef DEBUG
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.PowerShell.Common.Share.Config;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Collections.Generic;
-using System.IO.Pipes;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 {
