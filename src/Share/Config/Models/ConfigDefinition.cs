@@ -54,5 +54,12 @@ namespace Microsoft.Azure.PowerShell.Common.Share.Config
         /// </summary>
         /// <param name="value">The value to check.</param>
         public virtual void Validate(object value) { }
+
+        /// <summary>
+        /// Override in derived classes to perform side effects of applying the config value.
+        /// If a exception is thrown, the config will not be updated.
+        /// </summary>
+        /// <param name="value">Value of the config to apply.</param>
+        public virtual void Apply(object value) { }
     }
 }
