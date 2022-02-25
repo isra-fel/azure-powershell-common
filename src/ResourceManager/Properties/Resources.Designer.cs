@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -339,6 +339,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string SubscriptionNameNotFound {
             get {
                 return ResourceManager.GetString("SubscriptionNameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If a subscription is not specified, please check the configs by `Get-AzConfig`..
+        /// </summary>
+        public static string SubscriptionNotFouldPleaseCheckConfig {
+            get {
+                return ResourceManager.GetString("SubscriptionNotFouldPleaseCheckConfig", resourceCulture);
             }
         }
         
