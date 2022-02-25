@@ -12,18 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.PowerShell.Common.Share.Config
 {
     /// <summary>
     /// This class stores keys of pre-defined configs.
-    /// Note: keys defined here should NEVER be removed or changed to prevent breaking change.
     /// </summary>
-    public static class ConfigKeys
+    /// <remarks>
+    /// All keys should be defined in ConfigKeys class in Azure/azure-powershell repo.
+    /// If the key is used in common code, duplicate it here.
+    /// Keys defined here should NEVER be removed or changed to prevent breaking change.
+    /// </remarks>
+    public static class ConfigKeysForCommon
     {
         public const string EnableInterceptSurvey = "EnableInterceptSurvey";
         public const string SuppressWarningMessage = "SuppressWarningMessage";
-        public const string DefaultSubscriptionForLogin = "DefaultSubscriptionForLogin";
     }
 }
