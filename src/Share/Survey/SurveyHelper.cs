@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.PowerShell.Common.Share.Config;
+using Microsoft.Azure.PowerShell.Common.Config;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;

@@ -15,7 +15,7 @@
 #undef DEBUG
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.PowerShell.Common.Share.Config;
+using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Collections.Generic;
