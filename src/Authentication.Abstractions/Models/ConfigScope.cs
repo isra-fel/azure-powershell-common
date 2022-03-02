@@ -12,17 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-namespace Microsoft.Azure.PowerShell.Common.Share.Config
+namespace Microsoft.Azure.PowerShell.Common.Config
 {
-    public class ClearConfigOptions
+    public enum ConfigScope
     {
-        public ClearConfigOptions(string key)
-        {
-            Key = key;
-        }
-        public string Key { get; }
-        public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser;
-        public string Qualifier { get; set; } = null;
+        CurrentUser, // default
+        Process,
+        Default,
+        TBD // todo: placeholder, remove me
     }
 }

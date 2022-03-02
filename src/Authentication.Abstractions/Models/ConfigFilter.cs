@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.Common.Share.Config
+namespace Microsoft.Azure.PowerShell.Common.Config
 {
     /// <summary>
     /// Filter options for listing configurations. Used as input of some API of <see cref="IConfigManager" />

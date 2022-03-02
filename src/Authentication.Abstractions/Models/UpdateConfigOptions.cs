@@ -12,19 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Common.Share.Config
+using System;
+
+namespace Microsoft.Azure.PowerShell.Common.Config
 {
     /// <summary>
-    /// This class stores keys of pre-defined configs.
+    /// Options for updating a config. Used as input of <see cref="IConfigManager.UpdateConfig(UpdateConfigOptions)"/>
     /// </summary>
-    /// <remarks>
-    /// All keys should be defined in ConfigKeys class in Azure/azure-powershell repo.
-    /// If the key is used in common code, duplicate it here.
-    /// Keys defined here should NEVER be removed or changed to prevent breaking change.
-    /// </remarks>
-    public static class ConfigKeysForCommon
+    public class UpdateConfigOptions
     {
-        public const string EnableInterceptSurvey = "EnableInterceptSurvey";
-        public const string SuppressWarningMessage = "SuppressWarningMessage";
+        public UpdateConfigOptions(string key, object value)
+        {
+            Key = key ?? throw new ArgumentNullException(nameof(key));
+            Value = value;
+        }
+
+        public string Key { get; }
+        public object Value { get; }
+        public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser; // todo: maybe Scope should be mandatory when constructing UpdateConfigOptions. There's no obvious preference in the perspective of the library
+        public string Qualifier { get; set; } = null;
     }
 }
