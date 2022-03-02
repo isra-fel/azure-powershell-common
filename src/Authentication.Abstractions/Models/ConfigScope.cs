@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Common.Share.Config
+namespace Microsoft.Azure.PowerShell.Common.Config
 {
-    public enum ConfigLevel
+    public enum ConfigScope
     {
-        Az,
-        Module,
-        Cmdlet
+        CurrentUser, // default
+        Process,
+        Default,
+        TBD // todo: placeholder, remove me
     }
 }

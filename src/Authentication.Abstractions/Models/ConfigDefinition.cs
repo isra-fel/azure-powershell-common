@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.Common.Share.Config
+namespace Microsoft.Azure.PowerShell.Common.Config
 {
     /// <summary>
     /// Represents the definition of a config of Azure PowerShell.

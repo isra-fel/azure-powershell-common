@@ -12,17 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 
-namespace Microsoft.Azure.PowerShell.Common.Share.Config
+namespace Microsoft.Azure.PowerShell.Common.Config
 {
-    public class ClearConfigOptions
+    /// <summary>
+    /// Options for updating a config. Used as input of <see cref="IConfigManager.UpdateConfig(UpdateConfigOptions)"/>
+    /// </summary>
+    public class UpdateConfigOptions
     {
-        public ClearConfigOptions(string key)
+        public UpdateConfigOptions(string key, object value)
         {
-            Key = key;
+            Key = key ?? throw new ArgumentNullException(nameof(key));
+            Value = value;
         }
+
         public string Key { get; }
-        public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser;
+        public object Value { get; }
+        public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser; // todo: maybe Scope should be mandatory when constructing UpdateConfigOptions. There's no obvious preference in the perspective of the library
         public string Qualifier { get; set; } = null;
     }
 }
