@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
+using Microsoft.Azure.PowerShell.Common.Config;
 using System;
-using System.IO;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
@@ -26,54 +27,36 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         static AzurePSDataCollectionProfile Initialize(IAzureSession session)
         {
             AzurePSDataCollectionProfile result = new AzurePSDataCollectionProfile(true);
-            try
-            {
-                var environmentValue = Environment.GetEnvironmentVariable(AzurePSDataCollectionProfile.EnvironmentVariableName);
-                bool enabled = true;
-                if (!string.IsNullOrWhiteSpace(environmentValue) && bool.TryParse(environmentValue, out enabled))
-                {
-                    result.EnableAzureDataCollection = enabled;
-                }
-                else
-                {
-                    var store = session.DataStore;
-                    string dataPath = Path.Combine(session.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-                    if (store.FileExists(dataPath))
-                    {
-                        string contents = store.ReadFileAsText(dataPath);
-                        var localResult = JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
-                        if (localResult != null && localResult.EnableAzureDataCollection.HasValue)
-                        {
-                            result = localResult;
-                        }
-                    }
-                    else
-                    {
-                        WritePSDataCollectionProfile(session, new AzurePSDataCollectionProfile(true));
-                    }
-                }
-            }
-            catch
-            {
-                // do not throw for i/o or serialization errors
-            }
 
+            session.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager);
+            Debug.Assert(configManager != null);
+            var isNotSet = configManager.ListConfigs(new ConfigFilter()
+            {
+                Keys = new string[] { ConfigKeysForCommon.EnableDataCollection },
+                Qualifier = "Az"
+            }).All(x => x.Scope == ConfigScope.Default);
+
+            if (isNotSet)
+            {
+                WritePSDataCollectionProfile(session, result);
+            }
+            else
+            {
+                result.EnableAzureDataCollection = configManager.GetConfigValue<bool>(ConfigKeysForCommon.EnableDataCollection);
+            }
             return result;
         }
 
         public static void WritePSDataCollectionProfile(IAzureSession session, AzurePSDataCollectionProfile profile)
         {
+            session.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager);
+            Debug.Assert(configManager != null);
+            // todo: at what scope?
+            // todo: what if profile.Enable... is null?
+
             try
             {
-                var store = session.DataStore;
-                string dataPath = Path.Combine(session.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-                if (!store.DirectoryExists(session.ProfileDirectory))
-                {
-                    store.CreateDirectory(session.ProfileDirectory);
-                }
-
-                string contents = JsonConvert.SerializeObject(profile);
-                store.WriteFile(dataPath, contents);
+                configManager.UpdateConfig(ConfigKeysForCommon.EnableDataCollection, profile.EnableAzureDataCollection);
             }
             catch
             {

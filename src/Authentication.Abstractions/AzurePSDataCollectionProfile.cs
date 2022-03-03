@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             EnableAzureDataCollection = enable;
         }
 
-        [JsonProperty(PropertyName = "enableAzureDataCollection")]
         public bool? EnableAzureDataCollection { get; set; }
     }
 }
