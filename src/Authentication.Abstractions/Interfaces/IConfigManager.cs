@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// <summary>
         /// Update the value of a config.
         /// </summary>
-        /// <param name="options">Specify the key, value, and optionally scope and qualifier etc. to update.</param>
+        /// <param name="options">Specify the key, value, and optionally scope and appliesTo etc. to update.</param>
         /// <returns>The updated config, both definition and value.</returns>
         ConfigData UpdateConfig(UpdateConfigOptions options);
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// <summary>
         /// Clear a config set previously.
         /// </summary>
-        /// <param name="options">Specify the key, and optionally scope and qualifier etc. to update.</param>
+        /// <param name="options">Specify the key, and optionally scope and appliesTo etc. to update.</param>
         void ClearConfig(ClearConfigOptions options);
     }
 }

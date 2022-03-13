@@ -21,12 +21,12 @@ namespace Microsoft.Azure.PowerShell.Common.Config
     /// </summary>
     public class ConfigData
     {
-        public ConfigData(ConfigDefinition config, object value, ConfigScope scope, string qualifier)
+        public ConfigData(ConfigDefinition config, object value, ConfigScope scope, string appliesTo)
         {            
             Definition = config ?? throw new PSArgumentNullException(nameof(config));
             Value = value;
             Scope = scope;
-            Qualifier = qualifier;
+            AppliesTo = appliesTo;
         }
 
         public ConfigDefinition Definition { get; }
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// Specifies a module or cmdlet that the config applies to.
         /// If null, it applies to all.
         /// </summary>
-        public string Qualifier { get; }
+        public string AppliesTo { get; }
 
         public ConfigScope Scope { get; }
     }

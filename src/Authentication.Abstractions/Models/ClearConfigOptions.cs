@@ -31,6 +31,6 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// Specifies a module or cmdlet that the config applies to.
         /// If null, it applies to all.
         /// </summary>
-        public string Qualifier { get; set; } = null;
+        public string AppliesTo { get; set; } = null;
     }
 }
