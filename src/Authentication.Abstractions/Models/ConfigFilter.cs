@@ -21,6 +21,14 @@ namespace Microsoft.Azure.PowerShell.Common.Config
     /// </summary>
     public class ConfigFilter
     {
+        /// <summary>
+        /// Represents the global config qualifier - the config applies to all cmdlets of Azure PowerShell.
+        /// </summary>
+        public const string GlobalQualifier = "Az";
+
+        /// <summary>
+        /// Keys of the configs to filter. When omitted, all the keys will be used.
+        /// </summary>
         public IEnumerable<string> Keys { get; set; } = null;
 
         /// <summary>
@@ -29,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// <remarks>
         /// Possible values are:
         /// - null: the config applies to any of above.
-        /// - "Az": the config applies to all modules and cmdlets of Azure PowerShell.
+        /// - <see cref="GlobalQualifier"/> ("Az"): the config applies to all modules and cmdlets of Azure PowerShell.
         /// - Name of a module: the config applies to a certain module of Azure PowerShell. For example, "Az.Storage".
         /// - Name of a cmdlet: the config applies to a certain cmdlet of Azure PowerShell. For example, "Get-AzKeyVault".
         /// </remarks>
