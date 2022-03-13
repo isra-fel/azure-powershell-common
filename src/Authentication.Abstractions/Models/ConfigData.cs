@@ -21,13 +21,12 @@ namespace Microsoft.Azure.PowerShell.Common.Config
     /// </summary>
     public class ConfigData
     {
-        public ConfigData(ConfigDefinition config, object value, ConfigScope scope, string qualifier, string fullKey)
+        public ConfigData(ConfigDefinition config, object value, ConfigScope scope, string qualifier)
         {            
             Definition = config ?? throw new PSArgumentNullException(nameof(config));
             Value = value;
             Scope = scope;
             Qualifier = qualifier;
-            FullKey = fullKey ?? throw new PSArgumentNullException(nameof(fullKey));
         }
 
         public ConfigDefinition Definition { get; }
@@ -39,11 +38,6 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// If null, it applies to all.
         /// </summary>
         public string Qualifier { get; }
-
-        /// <summary>
-        /// The key at which this config is stored internally.
-        /// </summary>
-        public string FullKey { get; } // todo: not used publicly; maybe remove or private?
 
         public ConfigScope Scope { get; }
     }
