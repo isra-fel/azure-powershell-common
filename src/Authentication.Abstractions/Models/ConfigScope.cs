@@ -14,11 +14,25 @@
 
 namespace Microsoft.Azure.PowerShell.Common.Config
 {
+    /// <summary>
+    /// Scope for the config.
+    /// </summary>
     public enum ConfigScope
     {
-        CurrentUser, // default
+        /// <summary>
+        /// Config will be persitent on the disk, available for all the PowerShell sessions initiated by the current user.
+        /// </summary>
+        CurrentUser,
+
+        /// <summary>
+        /// Config is effective in current PowerShell process.
+        /// </summary>
         Process,
-        Default,
-        TBD // todo: placeholder, remove me
+
+        /// <summary>
+        /// Config is never set.
+        /// </summary>
+        /// <remarks>This option is not available when updating or clearing a config.</remarks>
+        Default
     }
 }

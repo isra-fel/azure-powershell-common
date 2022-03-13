@@ -40,9 +40,15 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// </summary>
         public abstract string HelpMessage { get; }
 
+        /// <summary>
+        /// Gets the name of the environment variable that can control this config.
+        /// </summary>
         public virtual string EnvironmentVariableName { get; } = null;
 
-        public virtual IReadOnlyCollection<ConfigLevel> ApplicableLevels => new ConfigLevel[] { ConfigLevel.Az, ConfigLevel.Module, ConfigLevel.Cmdlet };
+        /// <summary>
+        /// Gets how the config can be applied to.
+        /// </summary>
+        public virtual IReadOnlyCollection<ConfigLevel> CanBeAppliedTo => new ConfigLevel[] { ConfigLevel.Az, ConfigLevel.Module, ConfigLevel.Cmdlet }; // todo: not used, maybe remove
 
         /// <summary>
         /// Gets the type of the value of this config.

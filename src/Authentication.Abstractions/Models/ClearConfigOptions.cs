@@ -21,8 +21,15 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         {
             Key = key;
         }
+
         public string Key { get; }
+
         public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser;
+
+        /// <summary>
+        /// Specifies a module or cmdlet that the config applies to.
+        /// If null, it applies to all.
+        /// </summary>
         public string Qualifier { get; set; } = null;
     }
 }

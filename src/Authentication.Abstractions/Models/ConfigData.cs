@@ -31,9 +31,20 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         }
 
         public ConfigDefinition Definition { get; }
+
         public object Value { get; }
+
+        /// <summary>
+        /// Specifies a module or cmdlet that the config applies to.
+        /// If null, it applies to all.
+        /// </summary>
         public string Qualifier { get; }
-        public string FullKey { get; }
+
+        /// <summary>
+        /// The key at which this config is stored internally.
+        /// </summary>
+        public string FullKey { get; } // todo: not used publicly; maybe remove or private?
+
         public ConfigScope Scope { get; }
     }
 }
