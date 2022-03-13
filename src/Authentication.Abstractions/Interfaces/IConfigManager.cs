@@ -64,9 +64,10 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// </summary>
         /// <param name="key">Key of the config.</param>
         /// <param name="value">Value to update.</param>
+        /// <param name="scope">Scope of the config to update.</param>
         /// <remarks>This is a simple version of <see cref="UpdateConfig(UpdateConfigOptions)"/>.</remarks>
         /// <returns>The updated config, both definition and value.</returns>
-        ConfigData UpdateConfig(string key, object value);
+        ConfigData UpdateConfig(string key, object value, ConfigScope scope);
 
         /// <summary>
         /// Update the value of a config.
@@ -80,7 +81,8 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// </summary>
         /// <remarks>This is a simple version of <see cref="ClearConfig(ClearConfigOptions)"/>.</remarks>
         /// <param name="key">Key of the config to clear.</param>
-        void ClearConfig(string key);
+        /// <param name="scope">Scope of the config to update.</param>
+        void ClearConfig(string key, ConfigScope scope);
 
         /// <summary>
         /// Clear a config set previously.

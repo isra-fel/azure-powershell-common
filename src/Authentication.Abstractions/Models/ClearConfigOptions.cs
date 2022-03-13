@@ -17,14 +17,15 @@ namespace Microsoft.Azure.PowerShell.Common.Config
 {
     public class ClearConfigOptions
     {
-        public ClearConfigOptions(string key)
+        public ClearConfigOptions(string key, ConfigScope scope)
         {
             Key = key;
+            Scope = scope;
         }
 
         public string Key { get; }
 
-        public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser;
+        public ConfigScope Scope { get; set; }
 
         /// <summary>
         /// Specifies a module or cmdlet that the config applies to.
