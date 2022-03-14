@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             var isNotSet = configManager.ListConfigs(new ConfigFilter()
             {
                 Keys = new string[] { ConfigKeysForCommon.EnableDataCollection },
-                Qualifier = "Az"
+                AppliesTo = ConfigFilter.GlobalAppliesTo
             }).All(x => x.Scope == ConfigScope.Default);
 
             if (isNotSet)
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 
             try
             {
-                configManager.UpdateConfig(ConfigKeysForCommon.EnableDataCollection, profile.EnableAzureDataCollection);
+                configManager.UpdateConfig(ConfigKeysForCommon.EnableDataCollection, profile.EnableAzureDataCollection, ConfigScope.CurrentUser);
             }
             catch
             {
