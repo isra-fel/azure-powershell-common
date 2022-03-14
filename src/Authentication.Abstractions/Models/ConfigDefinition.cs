@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// <summary>
         /// Gets how the config can be applied to.
         /// </summary>
-        public virtual IReadOnlyCollection<ConfigLevel> CanBeAppliedTo => new ConfigLevel[] { ConfigLevel.Az, ConfigLevel.Module, ConfigLevel.Cmdlet }; // todo: not used, maybe remove
+        public virtual IReadOnlyCollection<AppliesTo> CanApplyTo => new AppliesTo[] { AppliesTo.Az, AppliesTo.Module, AppliesTo.Cmdlet };
 
         /// <summary>
         /// Gets the type of the value of this config.
