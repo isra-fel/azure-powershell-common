@@ -14,11 +14,24 @@
 
 namespace Microsoft.Azure.PowerShell.Common.Config
 {
-    public enum ConfigLevel
+    /// <summary>
+    /// General categories of levels that a config applies to.
+    /// </summary>
+    public enum AppliesTo
     {
+        /// <summary>
+        /// The config can apply to whole Azure PowerShell.
+        /// </summary>
         Az,
+
+        /// <summary>
+        /// The config can apply to a certain module.
+        /// </summary>
         Module,
+
+        /// <summary>
+        /// The config can apply to a certain cmdlet.
+        /// </summary>
         Cmdlet
     }
-    // todo: consider removing
 }

@@ -21,15 +21,21 @@ namespace Microsoft.Azure.PowerShell.Common.Config
     /// </summary>
     public class UpdateConfigOptions
     {
-        public UpdateConfigOptions(string key, object value)
+        public UpdateConfigOptions(string key, object value, ConfigScope scope)
         {
             Key = key ?? throw new ArgumentNullException(nameof(key));
+            Scope = scope;
             Value = value;
         }
 
         public string Key { get; }
         public object Value { get; }
-        public ConfigScope Scope { get; set; } = ConfigScope.CurrentUser; // todo: maybe Scope should be mandatory when constructing UpdateConfigOptions. There's no obvious preference in the perspective of the library
-        public string Qualifier { get; set; } = null;
+        public ConfigScope Scope { get; set; }
+
+        /// <summary>
+        /// Specifies a module or cmdlet that the config applies to.
+        /// If null, it applies to all.
+        /// </summary>
+        public string AppliesTo { get; set; } = null;
     }
 }
