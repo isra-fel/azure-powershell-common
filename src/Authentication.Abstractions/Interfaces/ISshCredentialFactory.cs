@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,26 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Common.Config
+using System.Security.Cryptography;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
+
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     /// <summary>
-    /// General categories of levels that a config applies to.
+    /// The factory for get SSH credential of VM
     /// </summary>
-    public enum AppliesTo
+    public interface ISshCredentialFactory
     {
         /// <summary>
-        /// The config can apply to whole Azure PowerShell.
+        /// Get SSH credential
         /// </summary>
-        Az,
-
-        /// <summary>
-        /// The config can apply to a certain module.
-        /// </summary>
-        Module,
-
-        /// <summary>
-        /// The config can apply to a certain cmdlet.
-        /// </summary>
-        Cmdlet
+        /// <param name="context">The context to use for authentication</param>
+        /// <param name="rsaKeyInfo">The RSAParameters import from RSA public key or created in memory</param>
+        /// <returns>Credentials for SSH.</returns>
+        SshCredential GetSshCredential(IAzureContext context, RSAParameters rsaKeyInfo);
     }
 }

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,26 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Common.Config
+using System;
+
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models
 {
-    /// <summary>
-    /// General categories of levels that a config applies to.
-    /// </summary>
-    public enum AppliesTo
+    public class SshCredential
     {
         /// <summary>
-        /// The config can apply to whole Azure PowerShell.
+        /// SSH credential content
         /// </summary>
-        Az,
+        public string Credential { get; set; }
 
         /// <summary>
-        /// The config can apply to a certain module.
+        /// The expire time of credential.
         /// </summary>
-        Module,
-
-        /// <summary>
-        /// The config can apply to a certain cmdlet.
-        /// </summary>
-        Cmdlet
+        public DateTimeOffset ExpiresOn { get; set; }
     }
 }
