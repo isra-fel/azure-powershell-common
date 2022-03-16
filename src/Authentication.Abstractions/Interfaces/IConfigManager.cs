@@ -46,8 +46,6 @@ namespace Microsoft.Azure.PowerShell.Common.Config
         /// <returns>Value of the config, or the default value if never set.</returns>
         T GetConfigValue<T>(string key, InvocationInfo invocation = null);
 
-        object GetConfigValue(Type type, string key, InvocationInfo invocation = null);
-
         /// <summary>
         /// List all configs with values.
         /// </summary>
