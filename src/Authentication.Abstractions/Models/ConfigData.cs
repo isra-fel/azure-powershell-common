@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.PowerShell.Common.Config
 {
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Common.Config
     {
         public ConfigData(ConfigDefinition config, object value, ConfigScope scope, string appliesTo)
         {            
-            Definition = config ?? throw new PSArgumentNullException(nameof(config));
+            Definition = config ?? throw new ArgumentNullException(nameof(config));
             Value = value;
             Scope = scope;
             AppliesTo = appliesTo;
