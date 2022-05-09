@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Common.Config
     public static class ConfigKeysForCommon
     {
         public const string EnableInterceptSurvey = "EnableInterceptSurvey";
-        public const string SuppressWarningMessage = "SuppressWarningMessage";
+        public const string SuppressBreakingChangeWarnings = "SuppressBreakingChangeWarnings";
         public const string EnableDataCollection = "EnableDataCollection";
     }
 }

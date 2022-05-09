@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
             {
                 if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
                 {
-                    supressWarningOrError = configManager.GetConfigValue<bool>(ConfigKeysForCommon.SuppressWarningMessage, invocationInfo);
+                    supressWarningOrError = configManager.GetConfigValue<bool>(ConfigKeysForCommon.SuppressBreakingChangeWarnings, invocationInfo);
                 }
             }
             catch (Exception)
