@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public string OldProfileFile { get; set; }
 
         /// <summary>
-        /// The directory contianing the ARM ContextContainer
+        /// The directory containing the ARM ContextContainer
         /// </summary>
         public string ARMProfileDirectory { get; set; }
 
@@ -214,13 +214,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public bool TryGetComponent<T>(string componentName, out T component) where T : class
         {
             var key = new ComponentKey(componentName, typeof(T));
-            component = null;
-            if (_componentRegistry.ContainsKey(key))
+            if (_componentRegistry.TryGetValue(key, out var componentObj) && componentObj is T componentT)
             {
-                component = _componentRegistry[key] as T;
+                component = componentT;
+                return true;
             }
-
-            return component != null;
+            else
+            {
+                component = null;
+                return false;
+            }
         }
 
         public void RegisterComponent<T>(string componentName, Func<T> componentInitializer) where T : class
@@ -260,14 +263,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 () =>
                 {
                     var key = new ComponentKey(componentName, typeof(T));
-                    if (_componentRegistry.ContainsKey(key))
+
+                    var concurrentComponents = _componentRegistry as ConcurrentDictionary<ComponentKey, object>;
+                    if (concurrentComponents.TryRemove(key, out var component))
                     {
-                        var component = _componentRegistry[key];
                         if (component is IAzureSessionListener listener)
                         {
                             _eventHandler -= listener.OnEvent;
                         }
-                        _componentRegistry.Remove(key);
                     }
                 });
         }
